@@ -4,14 +4,17 @@ import static java.lang.Thread.sleep;
 
 import androidx.annotation.NonNull;
 
+import com.acmerobotics.dashboard.FtcDashboard;
 import com.arcrobotics.ftclib.command.SubsystemBase;
 import com.arcrobotics.ftclib.geometry.Pose2d;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.robotcore.external.hardware.camera.Camera;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
 import org.firstinspires.ftc.teamcode.DriveConstants;
 import org.firstinspires.ftc.teamcode.processors.BlobProcessor;
+import org.firstinspires.ftc.teamcode.processors.CameraStreamProcessor;
 import org.firstinspires.ftc.vision.VisionPortal;
 import org.firstinspires.ftc.vision.VisionProcessor;
 import org.firstinspires.ftc.vision.apriltag.AprilTagDetection;
@@ -28,16 +31,18 @@ public class VisionSubsystem extends SubsystemBase {
     private VisionPortal visionPortal;
     private TelemetrySubsystem telemetry;
 
+    public BlobProcessor.Selected DetectedBlob = BlobProcessor.Selected.NONE;
+
     public VisionSubsystem(@NonNull HardwareMap hardwareMap, TelemetrySubsystem telemetry) {
         aprilTag = AprilTagProcessor.easyCreateWithDefaults();
         tfod = TfodProcessor.easyCreateWithDefaults();
         blob = new BlobProcessor();
+        CameraStreamProcessor stream = new CameraStreamProcessor();
         visionPortal = VisionPortal.easyCreateWithDefaults(
-                hardwareMap.get(WebcamName.class, "Webcam 1"), aprilTag, tfod, blob);
+                hardwareMap.get(WebcamName.class, "Webcam 1"), aprilTag, tfod, blob, stream);
         this.telemetry = telemetry;
 
-        visionPortal.setProcessorEnabled(aprilTag, false);
-        visionPortal.setProcessorEnabled(tfod, false);
+        FtcDashboard.getInstance().startCameraStream(stream, 0);
     }
 
     public void telemetryAprilTag() {
@@ -103,6 +108,14 @@ public class VisionSubsystem extends SubsystemBase {
         visionPortal.setProcessorEnabled(aprilTag, false);
     }
 
+    public void disableBlobs() {
+        visionPortal.setProcessorEnabled(blob, false);
+    }
+
+    public void enableBlobs() {
+        visionPortal.setProcessorEnabled(blob, true);
+    }
+
     /**
      * Stop the streaming session. This is an asynchronous call which does not take effect
      * immediately. If you call {@link #resumeStreaming()} before the operation is complete,
@@ -139,8 +152,15 @@ public class VisionSubsystem extends SubsystemBase {
             telemetryBlob();
         }
     }
-
-    public List<AprilTagDetection> getDetections() {
+    public List<AprilTagDetection> getAprilTags() {
         return aprilTag.getDetections();
+    }
+
+    public List<Recognition> getTfod() {
+        return tfod.getRecognitions();
+    }
+
+    public BlobProcessor.Selected getBlob() {
+        return blob.getSelection();
     }
 }
