@@ -38,8 +38,8 @@ public abstract class TeleOpMode extends BaseOpMode {
 //      Drive Subsystem Controls
         driveSubsystem.setDefaultCommand(new TeleOpDrive(driveSubsystem, driver::getLeftX, driver::getLeftY, driver::getRightX));
 
-        liftSubsystem.setDefaultCommand(new MoveLiftManual(liftSubsystem, toolOp));
-        GamepadButton toolA=new GamepadButton(toolOp, GamepadKeys.Button.A);
-        toolA.whenPressed(new ToggleGripper(gripperSubsystem));
+//        liftSubsystem.setDefaultCommand(new MoveLiftManual(liftSubsystem, toolOp));
+//        GamepadButton toolA=new GamepadButton(toolOp, GamepadKeys.Button.A);
+//        toolA.whenPressed(new ToggleGripper(gripperSubsystem));
     }
 }

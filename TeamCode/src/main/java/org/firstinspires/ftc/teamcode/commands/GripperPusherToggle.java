@@ -13,7 +13,7 @@ public class GripperPusherToggle extends CommandBase {
 
 	@Override
 	public void initialize() {
-		subsystem.togglePusher();
+//		subsystem.togglePusher();
 	}
 
 	@Override
