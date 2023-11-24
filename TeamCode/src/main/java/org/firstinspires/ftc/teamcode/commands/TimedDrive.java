@@ -38,7 +38,7 @@ public class TimedDrive extends CommandBase {
 		this.strafe = strafe;
 		this.rotation = rotation;
 		this.t= t;
-		timer = new Timing.Timer(t.longValue());
+
 
 
 		addRequirements(driveSubsystem);
@@ -46,11 +46,14 @@ public class TimedDrive extends CommandBase {
 
 	@Override
 	public void initialize(){
-		timer.start();
+		timer = new Timing.Timer(t.longValue());
 	}
 
 	@Override
 	public void execute() {
+		if(!timer.isTimerOn()){
+			timer.start();
+		}
 		driveSubsystem.driveRobotCentric(
 				strafe,
 				forward,

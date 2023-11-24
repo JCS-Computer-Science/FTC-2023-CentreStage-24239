@@ -25,9 +25,9 @@ public abstract class BaseOpMode extends CommandOpMode {
 	protected DriveSubsystem driveSubsystem, d;
 	protected OdometrySubsystem odometrySubsystem, o;
 	protected TelemetrySubsystem telemetrySubsystem, t;
-//	protected GripperSubsystem gripperSubsystem, gripper;
-//	protected LauncherSubsystem launcherSubsystem, launcher;
-//	protected LiftSubsystem liftSubsystem, lift;
+	protected GripperSubsystem gripperSubsystem, gripper;
+	protected LauncherSubsystem launcherSubsystem, launcher;
+	protected LiftSubsystem liftSubsystem, lift;
 
 
 	/**
@@ -41,9 +41,9 @@ public abstract class BaseOpMode extends CommandOpMode {
 		telemetrySubsystem = new TelemetrySubsystem(telemetry);
 		driveSubsystem = new DriveSubsystem(hardwareMap, telemetrySubsystem);
 
-//		liftSubsystem = new LiftSubsystem(hardwareMap, telemetrySubsystem);
-//		launcherSubsystem = new LauncherSubsystem(hardwareMap);
-//		gripperSubsystem = new GripperSubsystem(hardwareMap, telemetrySubsystem);
+		liftSubsystem = new LiftSubsystem(hardwareMap, telemetrySubsystem);
+		launcherSubsystem = new LauncherSubsystem(hardwareMap);
+		gripperSubsystem = new GripperSubsystem(hardwareMap, telemetrySubsystem);
 
 		odometrySubsystem = new OdometrySubsystem(hardwareMap, telemetrySubsystem);
 		odometrySubsystem.resetEncoders();
@@ -51,9 +51,9 @@ public abstract class BaseOpMode extends CommandOpMode {
 		d = driveSubsystem;
 		o = odometrySubsystem;
 		t = telemetrySubsystem;
-//		gripper = gripperSubsystem;
-//		launcher = launcherSubsystem;
-//		lift = liftSubsystem;
+		gripper = gripperSubsystem;
+		launcher = launcherSubsystem;
+		lift = liftSubsystem;
 
 		additionalConfig();
 	}
