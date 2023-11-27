@@ -6,13 +6,9 @@ import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 
 import org.firstinspires.ftc.teamcode.commands.LauncherServoToggle;
 import org.firstinspires.ftc.teamcode.commands.MoveLiftManual;
-import org.firstinspires.ftc.teamcode.commands.TeleOpDrive;
-import org.firstinspires.ftc.teamcode.commands.TeleOpDriveAutoHeading;
+import org.firstinspires.ftc.teamcode.commands.drive.TeleOpDrive;
 import org.firstinspires.ftc.teamcode.commands.ToggleGripper;
 import org.firstinspires.ftc.teamcode.commands.ToggleMotors;
-import org.firstinspires.ftc.teamcode.subsystems.DriveSubsystem;
-import org.firstinspires.ftc.teamcode.subsystems.OdometrySubsystem;
-import org.firstinspires.ftc.teamcode.subsystems.TelemetrySubsystem;
 
 /**
  * Base class for TeleOp opmodes comes preloaded with the following subsystems:

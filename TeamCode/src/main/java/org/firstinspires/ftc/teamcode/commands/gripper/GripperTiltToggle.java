@@ -1,19 +1,19 @@
-package org.firstinspires.ftc.teamcode.commands;
+package org.firstinspires.ftc.teamcode.commands.gripper;
 
 import com.arcrobotics.ftclib.command.CommandBase;
 
 import org.firstinspires.ftc.teamcode.subsystems.GripperSubsystem;
 
-public class GripperGrabberToggle extends CommandBase {
+public class GripperTiltToggle extends CommandBase {
 	private final GripperSubsystem subsystem;
-	public GripperGrabberToggle(GripperSubsystem subsystem) {
+	public GripperTiltToggle(GripperSubsystem subsystem) {
 		this.subsystem = subsystem;
 		addRequirements(subsystem);
 	}
 
 	@Override
 	public void initialize() {
-		subsystem.toggleGripper();
+
 	}
 
 	@Override
