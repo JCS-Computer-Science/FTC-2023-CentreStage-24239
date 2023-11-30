@@ -5,8 +5,6 @@ import com.arcrobotics.ftclib.util.Timing;
 
 import org.firstinspires.ftc.teamcode.subsystems.DriveSubsystem;
 
-import java.util.function.DoubleSupplier;
-
 /**
  * Drive the robot for a set amopunt of time.
  *
@@ -38,22 +36,14 @@ public class TimedDrive extends CommandBase {
 		this.strafe = strafe;
 		this.rotation = rotation;
 		this.t= t;
-
-
+		timer = new Timing.Timer(t.longValue());
+		timer.start();
 
 		addRequirements(driveSubsystem);
 	}
 
 	@Override
-	public void initialize(){
-		timer = new Timing.Timer(t.longValue());
-	}
-
-	@Override
 	public void execute() {
-		if(!timer.isTimerOn()){
-			timer.start();
-		}
 		driveSubsystem.driveRobotCentric(
 				strafe,
 				forward,

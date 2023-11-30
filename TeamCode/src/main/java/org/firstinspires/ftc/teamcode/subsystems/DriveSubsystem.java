@@ -9,7 +9,6 @@ import com.arcrobotics.ftclib.geometry.Transform2d;
 import com.arcrobotics.ftclib.hardware.motors.MotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.teamcode.DriveConstants;
 import org.firstinspires.ftc.teamcode.constants.AutoConstants;
 import org.firstinspires.ftc.teamcode.constants.MotorConstants;
 
@@ -29,6 +28,11 @@ public class DriveSubsystem extends SubsystemBase {
         frontRight = new MotorEx(hardwareMap, "frontRight");
         backLeft = new MotorEx(hardwareMap, "backLeft");
         backRight = new MotorEx(hardwareMap, "backRight");
+
+        frontLeft.setInverted(true);
+        frontRight.setInverted(true);
+        backLeft.setInverted(true);
+        backRight.setInverted(true);
 
         frontLeft.setFeedforwardCoefficients(MotorConstants.frontLeft.kS, MotorConstants.frontLeft.kV, MotorConstants.frontLeft.kA);
         frontRight.setFeedforwardCoefficients(MotorConstants.frontRight.kS, MotorConstants.frontRight.kV, MotorConstants.frontRight.kA);
@@ -57,21 +61,6 @@ public class DriveSubsystem extends SubsystemBase {
 
         thetaController = new PIDFController(AutoConstants.thetaPID.kP, AutoConstants.thetaPID.kI, AutoConstants.thetaPID.kD, AutoConstants.thetaPID.kF);
         thetaController.setTolerance(AutoConstants.thetaPID.tolerance);
-    }
-
-    @Override
-    public void periodic() {
-        if (DriveConstants.DEBUG) {
-            frontLeft.setFeedforwardCoefficients(MotorConstants.frontLeft.kS, MotorConstants.frontLeft.kV, MotorConstants.frontLeft.kA);
-            frontRight.setFeedforwardCoefficients(MotorConstants.frontRight.kS, MotorConstants.frontRight.kV, MotorConstants.frontRight.kA);
-            backLeft.setFeedforwardCoefficients(MotorConstants.backLeft.kS, MotorConstants.backLeft.kV, MotorConstants.backLeft.kA);
-            backRight.setFeedforwardCoefficients(MotorConstants.backRight.kS, MotorConstants.backRight.kV, MotorConstants.backRight.kA);
-
-            t.addLine(String.format("FL SAV %6.1f %6.1f %6.1f", frontLeft.getFeedforwardCoefficients()[0], frontLeft.getFeedforwardCoefficients()[1], frontLeft.getFeedforwardCoefficients()[2]));
-            t.addLine(String.format("FR SAV %6.1f %6.1f %6.1f", frontRight.getFeedforwardCoefficients()[0], frontRight.getFeedforwardCoefficients()[1], frontRight.getFeedforwardCoefficients()[2]));
-            t.addLine(String.format("BL SAV %6.1f %6.1f %6.1f", backLeft.getFeedforwardCoefficients()[0], backLeft.getFeedforwardCoefficients()[1], backLeft.getFeedforwardCoefficients()[2]));
-            t.addLine(String.format("BR SAV %6.1f %6.1f %6.1f", backRight.getFeedforwardCoefficients()[0], backRight.getFeedforwardCoefficients()[1], backRight.getFeedforwardCoefficients()[2]));
-        }
     }
 
     /**
@@ -166,9 +155,9 @@ public class DriveSubsystem extends SubsystemBase {
         //        /___________/
 
         drive.driveRobotCentric(
-                strafeSpeed,
+                -strafeSpeed,
                 forwardSpeed,
-                turnSpeed,
+                -turnSpeed,
                 squareInputs
         );
     }
@@ -214,9 +203,9 @@ public class DriveSubsystem extends SubsystemBase {
         //        /__________ /
 
         drive.driveFieldCentric(
-                strafeSpeed,
+                -strafeSpeed,
                 forwardSpeed,
-                turnSpeed,
+                -turnSpeed,
                 heading,
                 squareInputs
         );
@@ -236,5 +225,4 @@ public class DriveSubsystem extends SubsystemBase {
                                   double turnSpeed, double heading) {
         driveFieldCentric(strafeSpeed, forwardSpeed, turnSpeed, heading, false);
     }
-
 }
