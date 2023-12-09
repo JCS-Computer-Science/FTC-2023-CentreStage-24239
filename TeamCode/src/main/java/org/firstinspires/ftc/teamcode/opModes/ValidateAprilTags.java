@@ -2,8 +2,8 @@ package org.firstinspires.ftc.teamcode.opModes;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import org.firstinspires.ftc.teamcode.commands.SquareToAprilTag;
-import org.firstinspires.ftc.teamcode.commands.UpdateOdoFromAprilTag;
+import org.firstinspires.ftc.teamcode.commands.drive.SquareToAprilTag;
+import org.firstinspires.ftc.teamcode.commands.util.UpdateOdoFromAprilTag;
 import org.firstinspires.ftc.teamcode.opModes.base.AutoOpMode;
 import org.firstinspires.ftc.teamcode.subsystems.VisionSubsystem;
 

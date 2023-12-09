@@ -94,7 +94,7 @@ public class OdometrySubsystem extends SubsystemBase {
     public void setPose(Pose2d pose) {
         m_odometry.updatePose(pose);
     }
-    
+
     public void resetEncoders() {
         leftEncoder.reset();
         rightEncoder.reset();

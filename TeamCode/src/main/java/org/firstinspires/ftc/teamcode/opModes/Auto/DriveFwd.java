@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.opModes.Auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import org.firstinspires.ftc.teamcode.commands.TimedDrive;
+import org.firstinspires.ftc.teamcode.commands.drive.TimedDrive;
 import org.firstinspires.ftc.teamcode.opModes.base.AutoOpMode;
 
 @Autonomous(name = "DriveFwd", group = "Autonomous", preselectTeleOp = "Manual Control")

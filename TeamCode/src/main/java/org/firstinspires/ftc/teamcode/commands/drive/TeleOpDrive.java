@@ -1,10 +1,8 @@
-package org.firstinspires.ftc.teamcode.commands;
+package org.firstinspires.ftc.teamcode.commands.drive;
 
 import com.arcrobotics.ftclib.command.CommandBase;
 
 import org.firstinspires.ftc.teamcode.subsystems.DriveSubsystem;
-import org.firstinspires.ftc.teamcode.subsystems.OdometrySubsystem;
-import org.firstinspires.ftc.teamcode.subsystems.TelemetrySubsystem;
 
 import java.util.function.DoubleSupplier;
 
@@ -43,9 +41,9 @@ public class TeleOpDrive extends CommandBase {
 	@Override
 	public void execute() {
 		driveSubsystem.driveRobotCentric(
-				forward.getAsDouble(),
+				-forward.getAsDouble(),
 				strafe.getAsDouble(),
-				rotation.getAsDouble(),
+				-rotation.getAsDouble(),
 				true
 		);
 

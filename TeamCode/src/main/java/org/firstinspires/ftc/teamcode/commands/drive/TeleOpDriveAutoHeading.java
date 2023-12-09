@@ -1,10 +1,9 @@
-package org.firstinspires.ftc.teamcode.commands;
+package org.firstinspires.ftc.teamcode.commands.drive;
 
 import com.arcrobotics.ftclib.command.CommandBase;
 import com.arcrobotics.ftclib.controller.PIDFController;
 import com.arcrobotics.ftclib.geometry.Rotation2d;
 
-import org.firstinspires.ftc.teamcode.constants.TeleOpConstants;
 import org.firstinspires.ftc.teamcode.subsystems.DriveSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.OdometrySubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.TelemetrySubsystem;
@@ -53,9 +52,9 @@ public class TeleOpDriveAutoHeading extends CommandBase {
 
 
 //        based on the input of driver.getRightX move the rotation target by that amount
-        thetaController = new PIDFController(TeleOpConstants.thetaPID.kP, TeleOpConstants.thetaPID.kI, TeleOpConstants.thetaPID.kD, TeleOpConstants.thetaPID.kF);
-
-        thetaController.setTolerance(TeleOpConstants.thetaPID.tolerance);
+//        thetaController = new PIDFController(TeleOpConstants.thetaPID.kP, TeleOpConstants.thetaPID.kI, TeleOpConstants.thetaPID.kD, TeleOpConstants.thetaPID.kF);
+//
+//        thetaController.setTolerance(TeleOpConstants.thetaPID.tolerance);
 
         addRequirements(driveSubsystem, telemetrySubsystem, odometrySubsystem);
     }

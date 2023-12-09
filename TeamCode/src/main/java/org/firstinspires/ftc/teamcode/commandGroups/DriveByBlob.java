@@ -6,8 +6,8 @@ import com.arcrobotics.ftclib.command.SequentialCommandGroup;
 import com.arcrobotics.ftclib.geometry.Pose2d;
 import com.arcrobotics.ftclib.geometry.Rotation2d;
 
-import org.firstinspires.ftc.teamcode.commands.BlobDetect;
-import org.firstinspires.ftc.teamcode.commands.DriveToPose;
+import org.firstinspires.ftc.teamcode.commands.vision.BlobDetect;
+import org.firstinspires.ftc.teamcode.commands.drive.DriveToPose;
 import org.firstinspires.ftc.teamcode.processors.BlobProcessor;
 import org.firstinspires.ftc.teamcode.subsystems.DriveSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.OdometrySubsystem;

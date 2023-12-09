@@ -1,12 +1,11 @@
 package org.firstinspires.ftc.teamcode.opModes;
 
-import com.arcrobotics.ftclib.command.CommandBase;
 import com.arcrobotics.ftclib.command.CommandOpMode;
 import com.arcrobotics.ftclib.command.SequentialCommandGroup;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import org.firstinspires.ftc.teamcode.commands.RunCheck;
-import org.firstinspires.ftc.teamcode.commands.Wait;
+import org.firstinspires.ftc.teamcode.commands.util.RunCheck;
+import org.firstinspires.ftc.teamcode.commands.util.Wait;
 import org.firstinspires.ftc.teamcode.subsystems.TelemetrySubsystem;
 
 @Autonomous(name = "Boom", group = "Test")
