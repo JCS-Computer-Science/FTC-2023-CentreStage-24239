@@ -4,6 +4,7 @@ import com.arcrobotics.ftclib.command.button.GamepadButton;
 import com.arcrobotics.ftclib.gamepad.GamepadEx;
 import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 
+import org.firstinspires.ftc.teamcode.commands.GripperTiltControl;
 import org.firstinspires.ftc.teamcode.commands.LauncherServoToggle;
 import org.firstinspires.ftc.teamcode.commands.MoveLiftManual;
 import org.firstinspires.ftc.teamcode.commands.TeleOpDrive;
@@ -47,8 +48,12 @@ public abstract class TeleOpMode extends BaseOpMode {
         //Launcher
         GamepadButton toolY = new GamepadButton(toolOp, GamepadKeys.Button.Y);
         GamepadButton toolRBumper = new GamepadButton(toolOp, GamepadKeys.Button.RIGHT_BUMPER);
+        GamepadButton dUp= new GamepadButton(toolOp,GamepadKeys.Button.DPAD_UP);
+        GamepadButton dDown= new GamepadButton(toolOp,GamepadKeys.Button.DPAD_DOWN);
 
         toolY.whenPressed(new ToggleMotors(launcherSubsystem));
         toolRBumper.whenPressed(new LauncherServoToggle(launcherSubsystem));
+        dUp.whenPressed(new GripperTiltControl(true,gripperSubsystem,toolOp));
+        dDown.whenPressed(new GripperTiltControl(false,gripperSubsystem,toolOp));
     }
 }
