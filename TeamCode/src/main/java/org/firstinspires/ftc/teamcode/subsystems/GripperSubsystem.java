@@ -34,10 +34,10 @@ public class GripperSubsystem extends SubsystemBase {
 	}
 
 	public void toggleTurner() {
-		if (turner.getPosition() == 0.0) {
-			setGripper(1.0);
+		if (turner.getPosition() == 1.0) {
+			setTurner(0.0);
 		} else {
-			setGripper(0.0);
+			setTurner(1.0);
 		}
 	}
 

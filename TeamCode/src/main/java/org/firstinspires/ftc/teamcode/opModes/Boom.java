@@ -15,7 +15,7 @@ public class Boom extends CommandOpMode {
 		TelemetrySubsystem t = new TelemetrySubsystem(telemetry);
 		schedule(
 				new SequentialCommandGroup(
-					new Wait(20.0, t),
+					new Wait(20.0),
 					new RunCheck("Boom", t)
 				)
 		);

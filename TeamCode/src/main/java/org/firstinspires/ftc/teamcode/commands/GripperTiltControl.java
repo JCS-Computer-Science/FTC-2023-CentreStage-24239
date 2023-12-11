@@ -7,19 +7,17 @@ import org.firstinspires.ftc.teamcode.subsystems.GripperSubsystem;
 
 public class GripperTiltControl extends CommandBase {
 	private final GripperSubsystem subsystem;
-	private final GamepadEx toolOp;
-	private final boolean isUp;
-	public GripperTiltControl(boolean isUp, GripperSubsystem subsystem, GamepadEx toolOp) {
+	private boolean isUp;
+	public GripperTiltControl(boolean isUp, GripperSubsystem subsystem) {
 		this.subsystem = subsystem;
-		this.toolOp=toolOp;
 		this.isUp=isUp;
 
 	}
 
 	@Override
-	public void initialize() {
+	public void execute() {
 		double cur=subsystem.getTurnerPosition();
-		double newPos= isUp?Math.min(1,cur+0.05):Math.max(0,cur-0.05);
+		double newPos= isUp?cur+0.05:cur-0.05;
 		subsystem.setTurner(newPos);
 	}
 

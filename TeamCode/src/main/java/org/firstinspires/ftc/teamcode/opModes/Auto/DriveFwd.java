@@ -9,6 +9,6 @@ import org.firstinspires.ftc.teamcode.opModes.base.AutoOpMode;
 public class DriveFwd extends AutoOpMode {
     @Override
     public void setup() {
-        schedule(new TimedDrive(driveSubsystem,-0.5,0.0,0.0,4.0));
+        schedule(new TimedDrive(driveSubsystem,-0.5,0.0,0.0,5.0));
     }
 }
