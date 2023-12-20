@@ -5,17 +5,17 @@ import com.arcrobotics.ftclib.command.CommandBase;
 import org.firstinspires.ftc.teamcode.subsystems.GripperSubsystem;
 
 
-public class ToggleGripper extends CommandBase {
+public class ToggleTurner extends CommandBase {
     private GripperSubsystem gripperSubsystem;
 
-    public ToggleGripper(GripperSubsystem gripperSubsystem) {
+    public ToggleTurner(GripperSubsystem gripperSubsystem) {
         this.gripperSubsystem = gripperSubsystem;
 //        addRequirements(gripperSubsystem);
     }
 
     @Override
     public void initialize() {
-        gripperSubsystem.toggleGripper();
+        gripperSubsystem.toggleTurner();
     }
 
     public boolean isFinished() {

@@ -11,13 +11,14 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 @Config
 public class GripperSubsystem extends SubsystemBase {
 	private final TelemetrySubsystem t;
-	private ServoEx gripper;
+	private ServoEx gripper, turner;
 
 	public GripperSubsystem(@NonNull HardwareMap hardwareMap, TelemetrySubsystem t) {
 		this.t = t;
 
-
 		gripper = new SimpleServo(hardwareMap, "gripper", 0, 180);
+		turner = new SimpleServo(hardwareMap, "turner", 0, 180);
+
 
 
 	}
@@ -32,6 +33,13 @@ public class GripperSubsystem extends SubsystemBase {
 		}
 	}
 
+	public void toggleTurner() {
+		if (turner.getPosition() == 1.0) {
+			setTurner(0.0);
+		} else {
+			setTurner(1.0);
+		}
+	}
 
 
 
@@ -39,7 +47,11 @@ public class GripperSubsystem extends SubsystemBase {
 	public void setGripper(double position) {
 		gripper.setPosition(position);
 	}
+	public void setTurner(double position) {
+		turner.setPosition(position);
+	}
 
+	public double getTurnerPosition(){return turner.getPosition();}
 
 	@Override
 	public void periodic() {
