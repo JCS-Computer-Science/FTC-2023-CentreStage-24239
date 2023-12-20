@@ -5,7 +5,7 @@ import com.arcrobotics.ftclib.gamepad.GamepadEx;
 import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 
 import org.firstinspires.ftc.teamcode.commands.LauncherServoToggle;
-import org.firstinspires.ftc.teamcode.commands.MoveLiftManual;
+import org.firstinspires.ftc.teamcode.commands.MoveArmManual;
 import org.firstinspires.ftc.teamcode.commands.drive.TeleOpDrive;
 import org.firstinspires.ftc.teamcode.commands.ToggleGripper;
 import org.firstinspires.ftc.teamcode.commands.ToggleMotors;
@@ -36,15 +36,12 @@ public abstract class TeleOpMode extends BaseOpMode {
 //      Drive Subsystem Controls
         driveSubsystem.setDefaultCommand(new TeleOpDrive(driveSubsystem, driver::getLeftX, driver::getLeftY, driver::getRightX));
 
-        liftSubsystem.setDefaultCommand(new MoveLiftManual(liftSubsystem, toolOp));
-        GamepadButton toolA=new GamepadButton(toolOp, GamepadKeys.Button.A);
-        toolA.whenPressed(new ToggleGripper(gripperSubsystem));
+        armSubsystem.setDefaultCommand(new MoveArmManual(armSubsystem, toolOp));
+        toolOp.getGamepadButton(GamepadKeys.Button.A).whenPressed(new ToggleGripper(gripperSubsystem));
 
         //Launcher
-        GamepadButton toolY = new GamepadButton(toolOp, GamepadKeys.Button.Y);
-        GamepadButton toolRBumper = new GamepadButton(toolOp, GamepadKeys.Button.RIGHT_BUMPER);
+        toolOp.getGamepadButton(GamepadKeys.Button.Y).whenPressed(new ToggleMotors(launcherSubsystem));
+        toolOp.getGamepadButton(GamepadKeys.Button.RIGHT_BUMPER).whenPressed(new LauncherServoToggle(launcherSubsystem));
 
-        toolY.whenPressed(new ToggleMotors(launcherSubsystem));
-        toolRBumper.whenPressed(new LauncherServoToggle(launcherSubsystem));
     }
 }

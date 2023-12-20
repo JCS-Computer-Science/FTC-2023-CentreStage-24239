@@ -6,7 +6,7 @@ import org.firstinspires.ftc.teamcode.processors.BlobProcessor;
 import org.firstinspires.ftc.teamcode.subsystems.VisionSubsystem;
 
 public class BlobDetect extends CommandBase {
-	private VisionSubsystem v;
+	private final VisionSubsystem v;
 	public BlobDetect(VisionSubsystem v) {
 		this.v = v;
 	}

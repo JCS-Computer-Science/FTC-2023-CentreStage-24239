@@ -10,16 +10,18 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
 import org.firstinspires.ftc.teamcode.util.Convert;
 
-public class LiftSubsystem extends SubsystemBase {
+public class ArmSubsystem extends SubsystemBase {
 	private final TelemetrySubsystem t;
 	public DcMotorEx liftMotor;
 	private double ticksPerInches = 537.7/(Math.PI * Convert.mmToInches(38.2));
 
-	public LiftSubsystem(@NonNull HardwareMap hardwareMap, TelemetrySubsystem telemetrySubsystem) {
+	public ArmSubsystem(@NonNull HardwareMap hardwareMap, TelemetrySubsystem telemetrySubsystem) {
 		t = telemetrySubsystem;
-		liftMotor = hardwareMap.get(DcMotorEx.class, "liftMotor");
+		liftMotor = hardwareMap.get(DcMotorEx.class, "armMotor");
 
 		liftMotor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
+//		liftMotor.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+//		liftMotor.setDirection(DcMotorEx.Direction.REVERSE);
 		liftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 	}
 
@@ -55,6 +57,6 @@ public class LiftSubsystem extends SubsystemBase {
 	@Override
 	public void periodic() {
 
-		t.addData("Lift Position", liftMotor.getCurrentPosition());
+		t.addData("Arm Position", liftMotor.getCurrentPosition());
 	}
 }
