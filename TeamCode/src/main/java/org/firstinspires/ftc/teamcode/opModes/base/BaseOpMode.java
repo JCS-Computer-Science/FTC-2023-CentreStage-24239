@@ -4,6 +4,7 @@ import com.arcrobotics.ftclib.command.CommandOpMode;
 
 import org.firstinspires.ftc.teamcode.subsystems.DriveSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.GripperSubsystem;
+import org.firstinspires.ftc.teamcode.subsystems.HookSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.LauncherSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.LiftSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.OdometrySubsystem;
@@ -28,6 +29,7 @@ public abstract class BaseOpMode extends CommandOpMode {
 	protected GripperSubsystem gripperSubsystem, gripper;
 	protected LauncherSubsystem launcherSubsystem, launcher;
 	protected LiftSubsystem liftSubsystem, lift;
+	protected HookSubsystem hookSubsystem, hook;
 
 
 	/**
@@ -42,6 +44,7 @@ public abstract class BaseOpMode extends CommandOpMode {
 		driveSubsystem = new DriveSubsystem(hardwareMap, telemetrySubsystem);
 
 		liftSubsystem = new LiftSubsystem(hardwareMap, telemetrySubsystem);
+		hookSubsystem= new HookSubsystem(hardwareMap, telemetrySubsystem);
 		launcherSubsystem = new LauncherSubsystem(hardwareMap);
 		gripperSubsystem = new GripperSubsystem(hardwareMap, telemetrySubsystem);
 
@@ -54,6 +57,7 @@ public abstract class BaseOpMode extends CommandOpMode {
 		gripper = gripperSubsystem;
 		launcher = launcherSubsystem;
 		lift = liftSubsystem;
+		hook=hookSubsystem;
 
 		additionalConfig();
 	}

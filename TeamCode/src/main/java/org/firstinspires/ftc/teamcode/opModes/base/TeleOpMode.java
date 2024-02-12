@@ -6,6 +6,7 @@ import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 
 import org.firstinspires.ftc.teamcode.commands.GripperTiltControl;
 import org.firstinspires.ftc.teamcode.commands.LauncherServoToggle;
+import org.firstinspires.ftc.teamcode.commands.MoveHookManual;
 import org.firstinspires.ftc.teamcode.commands.MoveLiftManual;
 import org.firstinspires.ftc.teamcode.commands.ToggleTurner;
 import org.firstinspires.ftc.teamcode.commands.drive.TeleOpDrive;
@@ -39,6 +40,7 @@ public abstract class TeleOpMode extends BaseOpMode {
         driveSubsystem.setDefaultCommand(new TeleOpDrive(driveSubsystem, driver::getLeftX, driver::getLeftY, driver::getRightX));
 
         liftSubsystem.setDefaultCommand(new MoveLiftManual(liftSubsystem, toolOp));
+        hookSubsystem.setDefaultCommand(new MoveHookManual(hookSubsystem,toolOp));
         GamepadButton toolA=new GamepadButton(toolOp, GamepadKeys.Button.A);
         toolA.whenPressed(new ToggleGripper(gripperSubsystem));
 
@@ -51,6 +53,6 @@ public abstract class TeleOpMode extends BaseOpMode {
         toolY.whenPressed(new ToggleMotors(launcherSubsystem));
         toolRBumper.whenPressed(new LauncherServoToggle(launcherSubsystem));
         dUp.whenPressed(new ToggleTurner(gripperSubsystem));
-//        dDown.whenPressed(new GripperTiltControl(false,gripperSubsystem));
+//        dDown.whenPressed(new ToggleGripper(gripperSubsystem));
     }
 }
