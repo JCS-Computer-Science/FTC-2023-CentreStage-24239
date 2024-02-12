@@ -6,6 +6,7 @@ import org.firstinspires.ftc.teamcode.subsystems.DriveSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.GripperSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.HookSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.LauncherSubsystem;
+import org.firstinspires.ftc.teamcode.subsystems.ArmSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.LiftSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.OdometrySubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.TelemetrySubsystem;
@@ -19,7 +20,7 @@ import org.firstinspires.ftc.teamcode.subsystems.TelemetrySubsystem;
  * @see OdometrySubsystem
  * @see TelemetrySubsystem
  * @see GripperSubsystem
- * @see LiftSubsystem
+ * @see ArmSubsystem
  * @see LauncherSubsystem
  */
 public abstract class BaseOpMode extends CommandOpMode {
@@ -28,6 +29,7 @@ public abstract class BaseOpMode extends CommandOpMode {
 	protected TelemetrySubsystem telemetrySubsystem, t;
 	protected GripperSubsystem gripperSubsystem, gripper;
 	protected LauncherSubsystem launcherSubsystem, launcher;
+	protected ArmSubsystem armSubsystem, arm;
 	protected LiftSubsystem liftSubsystem, lift;
 	protected HookSubsystem hookSubsystem, hook;
 
@@ -43,6 +45,7 @@ public abstract class BaseOpMode extends CommandOpMode {
 		telemetrySubsystem = new TelemetrySubsystem(telemetry);
 		driveSubsystem = new DriveSubsystem(hardwareMap, telemetrySubsystem);
 
+		armSubsystem = new ArmSubsystem(hardwareMap, telemetrySubsystem);
 		liftSubsystem = new LiftSubsystem(hardwareMap, telemetrySubsystem);
 		hookSubsystem= new HookSubsystem(hardwareMap, telemetrySubsystem);
 		launcherSubsystem = new LauncherSubsystem(hardwareMap);
@@ -56,6 +59,7 @@ public abstract class BaseOpMode extends CommandOpMode {
 		t = telemetrySubsystem;
 		gripper = gripperSubsystem;
 		launcher = launcherSubsystem;
+		arm = armSubsystem;
 		lift = liftSubsystem;
 		hook=hookSubsystem;
 

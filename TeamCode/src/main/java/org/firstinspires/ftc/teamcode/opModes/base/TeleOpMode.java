@@ -6,7 +6,11 @@ import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 
 import org.firstinspires.ftc.teamcode.commands.GripperTiltControl;
 import org.firstinspires.ftc.teamcode.commands.LauncherServoToggle;
+
 import org.firstinspires.ftc.teamcode.commands.MoveHookManual;
+
+import org.firstinspires.ftc.teamcode.commands.MoveArmManual;
+
 import org.firstinspires.ftc.teamcode.commands.MoveLiftManual;
 import org.firstinspires.ftc.teamcode.commands.ToggleTurner;
 import org.firstinspires.ftc.teamcode.commands.drive.TeleOpDrive;
@@ -39,20 +43,20 @@ public abstract class TeleOpMode extends BaseOpMode {
 //      Drive Subsystem Controls
         driveSubsystem.setDefaultCommand(new TeleOpDrive(driveSubsystem, driver::getLeftX, driver::getLeftY, driver::getRightX));
 
+
         liftSubsystem.setDefaultCommand(new MoveLiftManual(liftSubsystem, toolOp));
         hookSubsystem.setDefaultCommand(new MoveHookManual(hookSubsystem,toolOp));
         GamepadButton toolA=new GamepadButton(toolOp, GamepadKeys.Button.A);
-        toolA.whenPressed(new ToggleGripper(gripperSubsystem));
+
+        armSubsystem.setDefaultCommand(new MoveArmManual(armSubsystem, toolOp));
+        toolOp.getGamepadButton(GamepadKeys.Button.A).whenPressed(new ToggleGripper(gripperSubsystem));
+
 
         //Launcher
-        GamepadButton toolY = new GamepadButton(toolOp, GamepadKeys.Button.Y);
-        GamepadButton toolRBumper = new GamepadButton(toolOp, GamepadKeys.Button.RIGHT_BUMPER);
-        GamepadButton dUp= new GamepadButton(toolOp,GamepadKeys.Button.DPAD_UP);
-        GamepadButton dDown= new GamepadButton(toolOp,GamepadKeys.Button.DPAD_DOWN);
+        toolOp.getGamepadButton(GamepadKeys.Button.Y).whenPressed(new ToggleMotors(launcherSubsystem));
+        toolOp.getGamepadButton(GamepadKeys.Button.RIGHT_BUMPER).whenPressed(new LauncherServoToggle(launcherSubsystem));
 
-        toolY.whenPressed(new ToggleMotors(launcherSubsystem));
-        toolRBumper.whenPressed(new LauncherServoToggle(launcherSubsystem));
-        dUp.whenPressed(new ToggleTurner(gripperSubsystem));
+        toolOp.getGamepadButton(GamepadKeys.Button.DPAD_UP).whenPressed(new ToggleTurner(gripperSubsystem));
 //        dDown.whenPressed(new ToggleGripper(gripperSubsystem));
     }
 }

@@ -7,7 +7,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
-import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.teamcode.util.Convert;
 
@@ -20,8 +19,6 @@ public class LiftSubsystem extends SubsystemBase {
 		liftMotor = hardwareMap.get(DcMotorEx.class, "liftMotor");
 
 		liftMotor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
-//		liftMotor.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
-//		liftMotor.setDirection(DcMotorEx.Direction.REVERSE);
 		liftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 	}
 
